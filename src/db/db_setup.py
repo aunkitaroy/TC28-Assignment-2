@@ -191,19 +191,26 @@ def ingest_csv_data(filename: str):
     filename: the name of the CSV file that you want to ingest into the database.
     """
 
-    # 1. Connect to the database file "utsc-exercise.db"
+    #1 Connect to the database file "utsc-excercise" using one of the helper functions above
+    #  and save the return value into a variable called db_connection.
     db_engine = connect_to_db("utsc-exercise.db")
 
-    # 2. Load the CSV 'filename' into a DataFrame
+   #2 Use pandas to load the CSV 'filename' into a dataframe which we'll call 'df'. If you are doing
+    # any cleaning of the dataframe after loading it, make a new variable called 'cleaned_df' and store the cleaned
+    # dataframe there.
     df = pd.read_csv(filename)
 
-    # Optional: Clean the DataFrame here if needed
-    cleaned_df = df.dropna()  # Example cleaning step
+    cleaned_df = df.dropna()  
 
-    # 3. Insert the data into the SQL database
+    #3 Now that you have the CSV data loaded into a dataframe, you need to insert the data into the SQL database.
+    # Using the dataframe that you created above, as well as the database connection that you have instantiated,
+    # use one of the helper functions above to insert the data into the database.
     cleaned_df.to_sql('EMPLOYEE', con=db_engine, if_exists='append', index=False)
 
-    # 4. Move the file to the 'hist' folder
+     #4 Now to show that you've finished processing the CSV file, move the file over to the hist folder 
+    # Hint: use shutil.move and read the parameters it takes)
+    # Hint: I personally use f-strings to use variables in the middle of strings, so in the destination path to move the file, I'd use f"hist/{filename}"
+    # If you want the formal definition of what an f-string does: https://www.geeksforgeeks.org/formatted-string-literals-f-strings-python/
     shutil.move(filename, f"hist/{filename}")
     
 

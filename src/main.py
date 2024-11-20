@@ -53,6 +53,7 @@ def get_avg_salary_by_country(employee_salary_df: pd.DataFrame, selected_countri
     st.subheader("Average Salary by Country")
     st.bar_chart(avg_salary_by_country.set_index('Country'))
 
+#TODO: MAKE THIS USING THE MODEL FUNCTION ABOVE (Copy pasting is your friend here)
 def get_num_employees_by_country(employee_salary_df: pd.DataFrame, selected_countries: list):
     """Calculates the number of employees by country for selected countries."""
     # Filter the dataframe based on selected countries
@@ -68,6 +69,7 @@ def get_num_employees_by_country(employee_salary_df: pd.DataFrame, selected_coun
     st.subheader("Number of Employees by Country")
     st.bar_chart(num_employees_by_country.set_index('Country'))
 
+#TODO: MAKE THIS USING THE MODEL FUNCTION ABOVE (Copy pasting is your friend here)
 def get_num_employees_by_job_title(employee_salary_df: pd.DataFrame, selected_titles: list):
     """Calculates the number of employees by job title for selected titles."""
     # Filter the dataframe based on selected job titles
